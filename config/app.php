@@ -19,7 +19,7 @@ return [
     // 应用地址
     'app_host'               => '',
     // 应用调试模式
-    'app_debug'              => true,
+    'app_debug'              => false,
     // 应用Trace
     'app_trace'              => false,
     // 是否支持多模块
@@ -141,7 +141,8 @@ return [
     // 显示错误信息
     'show_error_msg'         => false,
     // 异常处理handle类 留空使用 \think\exception\Handle
-    'exception_handle'       => '',
+//    'exception_handle'       => '',
+    'exception_handle'       => 'app\lib\exception\ExceptionHandler',
     //某些方法不需要使用接口鉴权，一些公共类方法
     'allow_method'=>[
         'V1.User/index/get',   //post方法允许直接访问

@@ -1,6 +1,9 @@
 <?php
 namespace app\api\controller\v1;
 
+use app\api\validate\TokenParam;
+use app\lib\exception\TokenException;
+use think\Exception;
 use think\Request;
 use app\api\controller\Send;
 use app\api\controller\Oauth;
@@ -16,7 +19,7 @@ class Token
 	/**
 	 * 请求时间差
 	 */
-	public static $timeDif = 10000;
+	public static $timeDif = 100000;
 
 	public static $accessTokenPrefix = 'accessToken_';
 	public static $refreshAccessTokenPrefix = 'refreshAccessToken_';
@@ -37,10 +40,8 @@ class Token
 	public function token(Request $request)
 	{
 		//参数验证
-		$validate = new \app\api\validate\Token;
-		if(!$validate->check(input(''))){
-			return self::returnMsg(401,$validate->getError());
-		}
+        (new TokenParam())->goCheck();
+
 		self::checkParams(input(''));  //参数校验
 		//数据库已经有一个用户,这里需要根据input('mobile')去数据库查找有没有这个用户
 		$userInfo = [
