@@ -928,7 +928,6 @@ class Request
 
             return $this->input($data, '', $default, $filter);
         }
-
         return $this->input($this->param, $name, $default, $filter);
     }
 
@@ -970,7 +969,6 @@ class Request
         if (empty($this->get)) {
             $this->get = $_GET;
         }
-
         return $this->input($this->get, $name, $default, $filter);
     }
 
@@ -1304,19 +1302,16 @@ class Request
 
         // 解析过滤器
         $filter = $this->getFilter($filter, $default);
-
         if (is_array($data)) {
             array_walk_recursive($data, [$this, 'filterValue'], $filter);
             reset($data);
         } else {
             $this->filterValue($data, $name, $filter);
         }
-
         if (isset($type) && $data !== $default) {
             // 强制类型转换
             $this->typeCast($data, $type);
         }
-
         return $data;
     }
 

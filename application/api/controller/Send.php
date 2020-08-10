@@ -11,7 +11,8 @@ trait Send
 	 * 返回成功
 	 */
 	public static function returnMsg($code = 200,$message = '',$data = [],$header = [])
-	{	
+	{
+
 		http_response_code($code);    //设置返回头部
         $return['code'] = (int)$code;
         $return['message'] = $message;

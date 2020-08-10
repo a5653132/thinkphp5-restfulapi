@@ -392,6 +392,7 @@ class App extends Container
                 }
             }
 
+
             // 监听app_dispatch
             $this->hook->listen('app_dispatch');
 
@@ -431,11 +432,11 @@ class App extends Container
         $this->middleware->add(function (Request $request, $next) use ($dispatch, $data) {
             return is_null($data) ? $dispatch->run() : $data;
         });
-
         $response = $this->middleware->dispatch($this->request);
 
         // 监听app_end
         $this->hook->listen('app_end', $response);
+
 
         return $response;
     }

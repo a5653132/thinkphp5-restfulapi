@@ -785,7 +785,6 @@ abstract class Rule
             // 路由到模块/控制器/操作
             $result = $this->dispatchModule($request, $route);
         }
-
         return $result;
     }
 

@@ -1,6 +1,7 @@
 <?php
 namespace app\api\controller\v1;
 
+use app\api\validate\TestTokenParam;
 use app\api\validate\TokenParam;
 use app\lib\exception\TokenException;
 use think\Exception;
@@ -37,7 +38,7 @@ class Token
 	/**
 	 * 生成token
 	 */
-	public function token(Request $request)
+	public function token()
 	{
 		//参数验证
         (new TokenParam())->goCheck();
@@ -54,6 +55,17 @@ class Token
 		} catch (Exception $e) {
 			return self::returnMsg(500,'fail',$e);
 		}
+	}
+
+
+    /**
+     * 获取一个测试的USERID
+     */
+	public function getTestToken() {
+        //参数验证
+        (new TestTokenParam())->goCheck();
+
+        var_dump(111); die;
 	}
 
 	/**

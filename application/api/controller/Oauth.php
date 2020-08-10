@@ -45,7 +45,7 @@ class Oauth
      * @throws UnauthorizedException
      */
     public static function getClient()
-    {   
+    {
         //获取头部信息
         try {
             $authorization = Request::header('authentication');   //tp5.1Facade调用 获取头部字段
@@ -59,6 +59,8 @@ class Oauth
             return self::returnMsg(401,'Invalid authorization credentials',Request::header(''));
         }
     }
+
+
 
     /**
      * 获取用户信息后 验证权限

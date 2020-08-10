@@ -162,6 +162,7 @@ class Middleware
 
     protected function resolve($type = 'route')
     {
+
         return function (Request $request) use ($type) {
 
             $middleware = array_shift($this->queue[$type]);

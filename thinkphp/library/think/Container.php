@@ -81,7 +81,6 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         if (is_null(static::$instance)) {
             static::$instance = new static;
         }
-
         return static::$instance;
     }
 
@@ -241,7 +240,6 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
             $newInstance = true;
             $vars        = [];
         }
-
         $abstract = isset($this->name[$abstract]) ? $this->name[$abstract] : $abstract;
 
         if (isset($this->instances[$abstract]) && !$newInstance) {
@@ -260,6 +258,7 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         } else {
             $object = $this->invokeClass($abstract, $vars);
         }
+
 
         if (!$newInstance) {
             $this->instances[$abstract] = $object;

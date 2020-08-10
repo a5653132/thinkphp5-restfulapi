@@ -376,7 +376,6 @@ if (!function_exists('input')) {
             $key = substr($key, 1);
             $has = true;
         }
-
         if ($pos = strpos($key, '.')) {
             // 指定参数来源
             $method = substr($key, 0, $pos);
